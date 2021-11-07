@@ -1,0 +1,4 @@
+{"Block": 0, "Receiver": "generate", "Amount": 69420, "Timestamp": "2021-08-28 22:59:40.508757"}
+{"Block": 1, "Timestamp": "2021-08-28 23:29:20.525518", "Sender": "generate", "Receiver": "02e494aaaee0ef3aebeff1a9d3dec738e6e04adfa1f1820c63b5fd2e6c188e67", "Amount": 69, "Hash": "00f8f795ee4e71c797b0f38dea92449ad92242004169c687a2a2eafe1d840c32", "Nonce": 341}
+{"Block": 2, "Timestamp": "2021-08-28 23:29:24.648754", "Sender": "generate", "Receiver": "02e494aaaee0ef3aebeff1a9d3dec738e6e04adfa1f1820c63b5fd2e6c188e67", "Amount": 69, "Hash": "0008e2f3345bb00d6331e51c2b5517d22c4cdc9939e590bdbe7ca64320a585aa", "Nonce": 685}
+{"Block": 3, "Timestamp": "2021-08-28 23:32:10.096059", "Sender": "02e494aaaee0ef3aebeff1a9d3dec738e6e04adfa1f1820c63b5fd2e6c188e67", "Receiver": "generate", "Amount": 69, "Hash": "00435802ba4afe6513a7d656e53dbafd2401d02cd42e8c2f80ef9cc24bbdc9a2", "Nonce": 459}
