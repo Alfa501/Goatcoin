@@ -3,14 +3,14 @@ import random
 import hashlib
 import cockchain as cc
 
-def createWallet():
+def createWallet():                                         # improve security, easy to brute force | (hash of random string + salt) hashed twice   
     key = ""
     for i in range(0,64):
         if random.randint(0,1) == 0:
             key += chr(random.randint(97, 122))
         elif random.randint(0,1) == 1:
             key += chr(random.randint(48, 57))
-    print("[*] Your Private Key: " + str(key))
+    print("[*] Your Private Key: " + str(key))                    # write keys to key file ?
     hash = hashlib.sha256(str(key).encode()).hexdigest()
     print("[*] Your Public Key: " + str(hash))
 
