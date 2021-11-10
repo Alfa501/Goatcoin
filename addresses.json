@@ -1,0 +1,8 @@
+{
+    "Full Nodes": {
+        "Germany": ["0.0.0.0", "1.1.1.1"],
+        "France": ["2.2.2.2"] },
+    "Super Nodes": {
+        "Germany": ["3.3.3.3"], 
+        "France": ["4.4.4.4"] }
+}
