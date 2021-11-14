@@ -3,7 +3,7 @@ import random
 import hashlib
 import cockchain as cc
 
-def createWallet():                                         # improve security, easy to brute force | (hash of random string + salt) hashed twice   
+def createWallet():                                         # improve security, easy to brute force | (hash of random string + salt) hashed twice
     key = ""
     for i in range(0,64):
         if random.randint(0,1) == 0:
