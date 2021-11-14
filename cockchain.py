@@ -4,9 +4,6 @@ import time
 import hashlib
 from datetime import datetime
 
-global miner
-miner = "02e494aaaee0ef3aebeff1a9d3dec738e6e04adfa1f1820c63b5fd2e6c188e67"
-
 output = open("cockchain", "a+")
 input = open("cockchain", "r")
 
