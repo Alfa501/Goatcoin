@@ -15,8 +15,9 @@ global chain
 test = input.readlines()
 chain = test
 blockIte = len(chain)
-print(blockIte)
-print(chain)
+
+#print(blockIte)
+#print(chain)
 
 def genesis():
     # creates the genesis block
