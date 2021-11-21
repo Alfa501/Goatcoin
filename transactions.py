@@ -4,28 +4,6 @@ import hashlib
 import cockchain as cc
 
 def verifypass(pass1, pass2):
-<<<<<<< HEAD
-        if pass1 == pass2:
-                return True
-
-def createWallet():                                         # improve security, easy to brute force | (hash of random string + salt) hashed twice
-        key = ""
-        for i in range(0,64):
-                if random.randint(0,1) == 0:
-                        key += chr(random.randint(97, 122))
-                elif random.randint(0,1) == 1:
-                        key += chr(random.randint(48, 57))
-        passphrase = input("[*] Enter a passphrase: ")
-        passphrase1 = input("[*] Repeat passphrase: ")
-        if verifypass(passphrase, passphrase1):
-                key += passphrase
-                key = hashlib.sha256(str(key).encode()).hexdigest()
-        else:
-                return
-        print("[*] Your Private Key: " + str(key))  # write keys to key file
-        hash = hashlib.sha256(str(key).encode()).hexdigest()
-        print("[*] Your Public Key: " + str(hash))
-=======
 	if pass1 == pass2:
 		return True
 
@@ -46,7 +24,6 @@ def createWallet():                                         # improve security, 
 	print("[*] Your Private Key: " + str(key))  # write keys to key file 
 	hash = hashlib.sha256(str(key).encode()).hexdigest()
 	print("[*] Your Public Key: " + str(hash))
->>>>>>> 7b11798f8ecb69790f9d3d8cc4570a04072b251e
 
 def getBalance(sender):
     balance = 0
