@@ -1,3 +1,4 @@
 import transactions
 import communication
-import getopt
+
+config = open("goatcoin.conf", "r")
