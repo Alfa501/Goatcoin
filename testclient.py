@@ -13,13 +13,4 @@ def connect(i):
     data = sock.recv(1024)
     print("C1")
     print('Received', repr(data))
-<<<<<<< HEAD
     print("C2")
-=======
-    print("C2")
-
-def test(j):
-    for k in range(j):
-        clientthread = threading.Thread(target=connect, args=(j,))
-        clientthread.start()
->>>>>>> 6aa5844970d6b9683e6acadf0376352212f0ea9b
