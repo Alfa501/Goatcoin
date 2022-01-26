@@ -13,16 +13,16 @@ server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 global unvalidated
 unvalidated = []
 
-def mining():
+def mining():                           # used for mining block, can only connect to full node
     print("[*] Mining Node mode")
     
 
-def full():
+def full():                             # talk to miners + frontend, relay blocks to/from super node, store full blockchain
     print("[*] Full Node mode")
     server.bind((ip,port))
     server.listen(5)
 
-def super():
+def super():                            # transaction pool, relay for full nodes, verify block inegrity, block voting
     print("[*] Super Node mode")
     server.bind((ip,port))
     print("S6")

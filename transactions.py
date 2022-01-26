@@ -2,11 +2,13 @@ import json
 import random
 import hashlib
 import cockchain as cc
+import communication as comm
 
 def verifypass(pass1, pass2):
 	if pass1 == pass2:
 		return True
 
+######## Frontend #########
 def createWallet():                                         # improve security, easy to brute force | (hash of random string + salt) hashed twice
 	key = ""                                                # check blockchain whether key already exists
 	for i in range(0,64):
@@ -42,13 +44,14 @@ def getBalance(sender):
 
 def transaction(sender, receiver, amount, balance):
     if int(balance) > int(amount):
-        cc.createBlock(sender, receiver, int(amount))
+        # cc.createBlock(sender, receiver, int(amount))
+        comm.transaction(sender, receiver, int(amount))
     elif int(balance) < int(amount):
         print("[*] Not enough GTC for this transaction")
         
 
-def checkAuth(publicKey, privateKey):
-    publicKeyGenerated = hashlib.sha256(str(privateKey).strip().encode()).hexdigest()
+def checkAuth(publicKey, privateKey, passphrase):
+    publicKeyGenerated = hashlib.sha256(str(privateKey+passphrase).strip().encode()).hexdigest()
     print(publicKeyGenerated, publicKey)
     if publicKeyGenerated == publicKey:
         return True

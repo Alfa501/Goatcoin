@@ -1,27 +1,70 @@
+import json
 import socket
+import random
+import hashlib
 
-ip = "10.10.10.1"
+ip = "full node"
 port = 6969
 
 sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+sock.connect((ip, port))
 
 def connect(i):
-    sock.connect((ip, port))
     sock.send(bytes("{s}", "UTF-8").format(str(i)))
     data = sock.recv(1024)
     print('Received', repr(data))
+    return data
 
-def getBalance():
-    pass
+def verifypass(pass1, pass2):
+    if pass1 == pass2:
+        return True
 
-def checkAuth():
-    pass
+def createWallet():                                         # improve security, easy to brute force | (hash of random string + salt) hashed twice
+	key = ""                                                # check blockchain whether key already exists
+	for i in range(0,64):
+		if random.randint(0,1) == 0:
+			key += chr(random.randint(97, 122))
+		elif random.randint(0,1) == 1:
+			key += chr(random.randint(48, 57))
+	passphrase = input("[*] Enter a passphrase: ")
+	passphrase1 = input("[*] Repeat passphrase: ")
+	if verifypass(passphrase, passphrase1):
+		key += passphrase
+		key = hashlib.sha256(str(key).encode()).hexdigest()
+	else:
+		return
+	print("[*] Your Private Key: " + str(key))  # write keys to key file 
+	hash = hashlib.sha256(str(key).encode()).hexdigest()
+	print("[*] Your Public Key: " + str(hash))
 
-def transaction():
-    pass
+def getBalance(sender):
+    balance = 0
+    chain = connect("chain")   # request balance of address x from full node.
+    for block in chain:
+        block = json.loads(str(block))
+        if "Receiver" in block:
+            if block["Receiver"] == sender:
+                balance += block["Amount"]
+    for block in chain:
+        block = json.loads(block)
+        if "Sender" in block:
+            if block["Sender"] == sender:
+                balance -= block["Amount"]
+    return balance
 
-def createWallet():
-    pass
+def transaction(sender, receiver, amount, balance):
+    if int(balance) > int(amount):
+        # cc.createBlock(sender, receiver, int(amount))
+        comm.transaction(sender, receiver, int(amount))
+    elif int(balance) < int(amount):
+        print("[*] Not enough GTC for this transaction")
+        
+
+def checkAuth(publicKey, privateKey, passphrase):
+    publicKeyGenerated = hashlib.sha256(str(privateKey+passphrase).strip().encode()).hexdigest()
+    print(publicKeyGenerated, publicKey)
+    if publicKeyGenerated == publicKey:
+        return True
 
 while True:
     selection = input("[*] Get Balance: 1\n[*] Make Transaction: 2\n[*] Create Wallet: 3\n")
