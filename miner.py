@@ -3,12 +3,16 @@ from sys import last_traceback
 #import geocoder
 import threading
 import hashlib
+import datetime
 
 global miner
 miner = "02e494aaaee0ef3aebeff1a9d3dec738e6e04adfa1f1820c63b5fd2e6c188e67"
 
 global last_block
 global difficulty
+global blockIte
+blockIte = 0
+
 difficulty = "00"
 
 def prevBlockHash(prev_block, nonce):
@@ -43,3 +47,15 @@ def connection(ip, port):
         last_block = client.recv(4096)
     mine(last_block)
 
+def createBlock(sender, receiver, amount):
+    # creates block w/ transaction info
+    global blockIte
+    hash, nonce = mine(blockIte)
+    block = {"Block": blockIte, "Timestamp": str(datetime.now()), "Sender": sender, "Receiver": receiver, "Amount": amount, "Hash": hash, "Nonce": nonce}
+    block = str(block)
+    block = block.replace("'", '"')
+    #chain.append(block)                Send block
+    #output.write(block + "\n")
+    print(block)
+    blockIte += 1
+    return

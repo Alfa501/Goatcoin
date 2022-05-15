@@ -17,12 +17,12 @@ def mining():                           # used for mining block, can only connec
     print("[*] Mining Node mode")
     
 
-def full():                             # talk to miners + frontend, relay blocks to/from super node, store full blockchain
+def full():                             # talk to miners, frontend, relay blocks to/from super node, store full blockchain
     print("[*] Full Node mode")
     server.bind((ip,port))
     server.listen(5)
 
-def super():                            # transaction pool, relay for full nodes, verify block inegrity, block voting
+def super():                            # transaction pool, relay for full nodes, verify block integrity, block voting
     print("[*] Super Node mode")
     server.bind((ip,port))
     print("S6")
